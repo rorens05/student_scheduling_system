@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @instructor.name %>
+</p>
+
+<p>
+  <strong>Instructor:</strong>
+  <%= @instructor.instructor_id %>
+</p>
+
+<p>
+  <strong>Birthday:</strong>
+  <%= @instructor.birthday %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @instructor.address %>
+</p>
+
+<p>
+  <strong>Contact no:</strong>
+  <%= @instructor.contact_no %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @instructor.email %>
+</p>
+
+<p>
+  <strong>Date enrolled:</strong>
+  <%= @instructor.date_enrolled %>
+</p>
+
+<%= link_to 'Edit', edit_instructor_path(@instructor) %> |
+<%= link_to 'Back', instructors_path %>
+
+<div class="row my-row">
+  <div class='col-sm-12'> 
+    <div class=" my-container">
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Name:</strong>
+        <%= @instructor.name %>
+      </p>
+
+      <p>
+        <strong>Instructor:</strong>
+        <%= @instructor.instructor_id %>
+      </p>
+
+      <p>
+        <strong>Birthday:</strong>
+        <%= @instructor.birthday %>
+      </p>
+
+      <p>
+        <strong>Address:</strong>
+        <%= @instructor.address %>
+      </p>
+
+      <p>
+        <strong>Contact no:</strong>
+        <%= @instructor.contact_no %>
+      </p>
+
+      <p>
+        <strong>Email:</strong>
+        <%= @instructor.email %>
+      </p>
+
+      <p>
+        <strong>Date enrolled:</strong>
+        <%= @instructor.date_enrolled %>
+      </p>
+
+      <%= link_to 'Edit', edit_instructor_path(@instructor) %> |
+      <%= link_to 'Back', instructors_path %>
+    </div>
+  </div>
+</div>

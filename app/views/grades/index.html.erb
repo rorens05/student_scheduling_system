@@ -1,0 +1,32 @@
+
+
+
+<div class="row my-row">
+  <div class='col-sm-12'> 
+    <div class=" my-container">
+      <p id="notice"><%= notice %></p>
+
+      <h1>Grades</h1>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Grade</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @grades.each do |grade| %>
+            <tr>
+              <td><%= link_to grade.grade, grade %></td>
+              <td><%= grade.description %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <br>
+    </div>
+  </div>
+</div>

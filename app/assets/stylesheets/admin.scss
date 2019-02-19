@@ -1,4 +1,4 @@
-$primary-color : #00d483;
+$primary-color : #00ad6b;
 $outline-btn : rgb(151, 151, 151);
 $secondary-color : #ddeee6	;
 $background-color : rgb(83, 83, 83);
@@ -25,6 +25,12 @@ html{
   &:focus{
     outline: none;
   }
+}
+
+.btn-my-primary{
+  color: rgb(43, 43, 43) !important;
+  background-color: $primary-color !important;
+  border: 1px solid green !important;
 }
 
 .sidebar{
@@ -156,6 +162,7 @@ table{
       }
       
     }
+    &:nth-child(even) {background-color: #f8f8f8;}
   }
 }
 

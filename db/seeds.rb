@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Grade.create(grade: "GRADE 7", description: 'Formerly called 1st year highschool')
+Grade.create(grade: "GRADE 8", description: 'Formerly called 2nd year highschool')
+Grade.create(grade: "GRADE 9", description: 'Formerly called 3rd year highschool')
+Grade.create(grade: "GRADE 10", description: 'Formerly called 4th year highschool')
