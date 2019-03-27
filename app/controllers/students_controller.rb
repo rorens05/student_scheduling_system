@@ -63,6 +63,11 @@ class StudentsController < ApplicationController
     end
   end
 
+  def import
+    notice = Student.import(params[:file])
+    redirect_to students_path, notice: notice
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_student
@@ -71,6 +76,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:name, :student_no, :birthday, :address, :contact_no, :email, :date_enrolled)
+      params.require(:student).permit(:grade, :school_year, :name, :student_no, :birthday, :address, :contact_no, :email, :date_enrolled)
     end
 end

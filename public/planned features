@@ -1,0 +1,13 @@
+scheduling features
+login logout of admin
+dashboard reports
+
+evaluations 
+	-students imports (student and average grade )
+	-create sections( number depending on number of student) 
+		-number of student / 30
+	-displays all sections
+		-edit section (instructors, schedules, rooms, subjects )
+		
+	-display updated sections
+ 
