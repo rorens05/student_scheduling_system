@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'evaluation/evaluate'
   resources :instructors
   resources :evaluations
   resources :curriculums

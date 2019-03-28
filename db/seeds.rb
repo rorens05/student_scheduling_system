@@ -1,12 +1,27 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
 
 Grade.create(grade: "GRADE 7", description: 'Formerly called 1st year highschool')
 Grade.create(grade: "GRADE 8", description: 'Formerly called 2nd year highschool')
 Grade.create(grade: "GRADE 9", description: 'Formerly called 3rd year highschool')
 Grade.create(grade: "GRADE 10", description: 'Formerly called 4th year highschool')
+
+Curriculum.create(name: "SPA", description: 'Special Program in Arts')
+Curriculum.create(name: "REG", description: 'Regular Students')
+Curriculum.create(name: "STE", description: 'Science, Technology and Engineering')
+Curriculum.create(name: "SPS", description: 'Special Program in Sports')
+
+(1..200).each do 
+    Student.create(name: Faker::Name.unique.name, student_no: Faker::Number.leading_zero_number(8), grade: Faker::Number.within(7..10), school_year: Faker::Number.within(2015..2019), average: Faker::Number.within(75..99), cur_name: "REG")
+end
+
+(1..200).each do 
+    Student.create(name: Faker::Name.unique.name, student_no: Faker::Number.leading_zero_number(8), grade: Faker::Number.within(7..10), school_year: Faker::Number.within(2015..2019), average: Faker::Number.within(75..99), cur_name: "SPA")
+end
+
+(1..200).each do 
+    Student.create(name: Faker::Name.unique.name, student_no: Faker::Number.leading_zero_number(8), grade: Faker::Number.within(7..10), school_year: Faker::Number.within(2015..2019), average: Faker::Number.within(75..99), cur_name: "STE")
+end
+
+(1..200).each do 
+    Student.create(name: Faker::Name.unique.name, student_no: Faker::Number.leading_zero_number(8), grade: Faker::Number.within(7..10), school_year: Faker::Number.within(2015..2019), average: Faker::Number.within(75..99), cur_name: "SPS")
+end

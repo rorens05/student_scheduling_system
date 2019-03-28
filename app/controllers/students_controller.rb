@@ -7,6 +7,13 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+
+    @students = @students.order("grade").order("curriculum_id").order("average DESC")
+    if(params[:school_year])
+      @students = @students.where(school_year: params[:school_year])
+    else
+      @students = @students.where(school_year: Date.today.year)
+    end
   end
 
   # GET /students/1
