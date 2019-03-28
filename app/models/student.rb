@@ -1,5 +1,7 @@
 class Student < ApplicationRecord
   belongs_to :curriculum
+  belongs_to :grade
+  belongs_to :section, optional: true
 
   before_validation :update_curriculum
 
@@ -7,6 +9,7 @@ class Student < ApplicationRecord
   validates :student_no, presence: true
   validates :school_year, presence: true
   validates :average, presence: true
+  
   
 
   attr_accessor :cur_name
@@ -35,14 +38,15 @@ class Student < ApplicationRecord
   end
 
   def update_curriculum
-    cur = Curriculum.find_by_name(cur_name) 
-    puts cur_name
-    if cur
-      self.curriculum = cur
-    else
-      self.curriculum = Curriculum.first
+    if self.curriculum.blank?
+      cur = Curriculum.find_by_name(cur_name) 
+      puts cur_name
+      if cur
+        self.curriculum = cur
+      else
+        self.curriculum = Curriculum.first
+      end
     end
-    puts cur.name
   end
 
   private

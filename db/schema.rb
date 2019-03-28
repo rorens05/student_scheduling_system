@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_28_154722) do
+ActiveRecord::Schema.define(version: 2019_03_28_203112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,17 @@ ActiveRecord::Schema.define(version: 2019_03_28_154722) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "sections", force: :cascade do |t|
+    t.string "name"
+    t.integer "school_year"
+    t.bigint "grade_id"
+    t.bigint "curriculum_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["curriculum_id"], name: "index_sections_on_curriculum_id"
+    t.index ["grade_id"], name: "index_sections_on_grade_id"
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "name"
     t.string "student_no"
@@ -69,12 +80,15 @@ ActiveRecord::Schema.define(version: 2019_03_28_154722) do
     t.date "date_enrolled"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "grade"
+    t.integer "grade_id"
     t.string "school_year"
     t.decimal "average"
     t.integer "curriculum_id"
+    t.integer "section_id"
   end
 
   add_foreign_key "evaluations", "curriculums"
   add_foreign_key "evaluations", "grades"
+  add_foreign_key "sections", "curriculums"
+  add_foreign_key "sections", "grades"
 end

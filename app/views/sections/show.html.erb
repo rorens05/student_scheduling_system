@@ -1,0 +1,69 @@
+
+<div class="row my-row">
+  <div class='col-sm-12'> 
+    <div class=" my-container">
+      <p id="notice"><%= notice %></p>
+
+      <p>
+        <strong>Name:</strong>
+        <%= @section.name %>
+      </p>
+
+      <p>
+        <strong>School year:</strong>
+        <%= @section.school_year %>
+      </p>
+
+      <p>
+        <strong>Grade:</strong>
+        <%= @section.grade.grade %>
+      </p>
+
+      <p>
+        <strong>Curriculum:</strong>
+        <%= @section.curriculum.name %>
+      </p>
+
+      <%= link_to 'Edit', edit_section_path(@section) %> |
+      <%= link_to 'Back', sections_path %>
+    </div>
+  </div>
+</div>
+    
+
+<div class="row my-row">
+  <div class='col-sm-12'> 
+    <div class=" my-container">
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Student no</th>
+            <th>Grade</th>
+            <th>School Year</th>
+            <th>Curriculum</th>
+            <th>Average</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @section.students.order("average DESC").each do |student| %>
+            <tr>
+              <td><%= link_to student.name, student %></td>
+              <td><%= student.student_no %></td>
+              <td><%= student.grade.grade %></td>
+              <td><%= student.full_school_year %></td>
+              <td><%= student.curriculum.name %></td>
+              <td><%= student.average %></td>
+              <td><%= link_to 'Edit', edit_student_path(student), class: "btn btn-info btn-sm" %> <%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+              
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

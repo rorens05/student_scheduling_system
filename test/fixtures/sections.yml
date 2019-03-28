@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  school_year: 1
+  grade: one
+  curriculum: one
+
+two:
+  name: MyString
+  school_year: 1
+  grade: two
+  curriculum: two

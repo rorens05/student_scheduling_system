@@ -8,7 +8,7 @@ class StudentsController < ApplicationController
   def index
     @students = Student.all
 
-    @students = @students.order("grade").order("curriculum_id").order("average DESC")
+    @students = @students.order("grade_id").order("curriculum_id").order("average DESC")
     if(params[:school_year])
       @students = @students.where(school_year: params[:school_year])
     else
@@ -34,7 +34,6 @@ class StudentsController < ApplicationController
   # POST /students.json
   def create
     @student = Student.new(student_params)
-
     respond_to do |format|
       if @student.save
         format.html { redirect_to @student, notice: 'Student was successfully created.' }
@@ -83,6 +82,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:grade, :school_year, :name, :student_no, :birthday, :address, :contact_no, :email, :date_enrolled)
+      params.require(:student).permit(:section_id, :average, :grade_id, :school_year, :name, :student_no, :birthday, :address, :contact_no, :email, :date_enrolled)
     end
 end

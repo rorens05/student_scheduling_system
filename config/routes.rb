@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sections
   post 'evaluation/evaluate'
   resources :instructors
   resources :evaluations
