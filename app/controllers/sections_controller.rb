@@ -6,7 +6,7 @@ class SectionsController < ApplicationController
   # GET /sections
   # GET /sections.json
   def index
-    @sections = Section.all
+    @sections = Section.where(school_year: Date.today.year).order(:name)
     if params[:school_year]
       @sections = Section.where(school_year: params[:school_year]).order(:name)
     end
