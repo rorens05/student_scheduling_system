@@ -8,7 +8,7 @@ class SectionsController < ApplicationController
   def index
     @sections = Section.all
     if params[:school_year]
-      @sections = Section.where(school_year: params[:school_year]).order(:id)
+      @sections = Section.where(school_year: params[:school_year]).order(:name)
     end
   end
 
