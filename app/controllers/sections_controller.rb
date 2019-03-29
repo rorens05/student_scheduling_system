@@ -7,6 +7,9 @@ class SectionsController < ApplicationController
   # GET /sections.json
   def index
     @sections = Section.all
+    if params[:school_year]
+      @sections = Section.where(school_year: params[:school_year])
+    end
   end
 
   # GET /sections/1
@@ -30,6 +33,16 @@ class SectionsController < ApplicationController
 
     respond_to do |format|
       if @section.save
+        SubjectClass.create(schedule: "7:40 - 8:40", section_id: @section.id)
+        SubjectClass.create(schedule: "8:40 - 9:40", section_id: @section.id)
+        SubjectClass.create(schedule: "10:00 - 11:00", section_id: @section.id)
+        SubjectClass.create(schedule: "11:00 - 12:00", section_id: @section.id)
+
+        SubjectClass.create(schedule: "1:00 - 2:00", section_id: @section.id)
+        SubjectClass.create(schedule: "2:00 - 3:00", section_id: @section.id)
+        SubjectClass.create(schedule: "3:00 - 4:00", section_id: @section.id)
+        SubjectClass.create(schedule: "4:00 - 5:00", section_id: @section.id)
+
         format.html { redirect_to @section, notice: 'Section was successfully created.' }
         format.json { render :show, status: :created, location: @section }
       else
@@ -37,6 +50,7 @@ class SectionsController < ApplicationController
         format.json { render json: @section.errors, status: :unprocessable_entity }
       end
     end
+
   end
 
   # PATCH/PUT /sections/1

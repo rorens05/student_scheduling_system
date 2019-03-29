@@ -10,8 +10,6 @@ class Student < ApplicationRecord
   validates :school_year, presence: true
   validates :average, presence: true
   
-  
-
   attr_accessor :cur_name
 
   def full_school_year

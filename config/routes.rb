@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :sections
   post 'evaluation/evaluate'
+  post 'evaluation/save_class'
   resources :instructors
   resources :evaluations
   resources :curriculums

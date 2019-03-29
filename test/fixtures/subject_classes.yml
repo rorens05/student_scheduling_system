@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  schedule: MyString
+  subject: MyString
+  day: MyString
+  minutes_per_week: 1
+  subject_teacher: MyString
+  section: one
+
+two:
+  schedule: MyString
+  subject: MyString
+  day: MyString
+  minutes_per_week: 1
+  subject_teacher: MyString
+  section: two

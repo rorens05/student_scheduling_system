@@ -4,37 +4,138 @@
     <div class=" my-container">
       <p id="notice"><%= notice %></p>
 
-      <h1>Sections</h1>
+      <h1>Sections</h1><hr>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>School year</th>
-            <th>Grade</th>
-            <th>Curriculum</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <% @sections.each do |section| %>
-            <tr>
-              <td><%= section.name %></td>
-              <td><%= section.school_year %></td>
-              <td><%= section.grade.grade %></td>
-              <td><%= section.curriculum.name %></td>
-              <td><%= link_to 'Show', section %></td>
-              <td><%= link_to 'Edit', edit_section_path(section) %></td>
-              <td><%= link_to 'Destroy', section, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            </tr>
+      <div class="form-group">
+        <label for="section_school_year">Choose school year</label>
+        <select class="form-control" id="section_school_year">
+          <% Student.order("school_year DESC").distinct.pluck(:school_year).each do |school_year| %>           
+            <option value="<%= school_year %>" <%= check_selected(school_year, params[:school_year]) %> ><%= school_year + " - " + (school_year.to_i + 1).to_s %></option>
           <% end %>
-        </tbody>
-      </table>
+        </select>
+      </div><hr>
 
+      <% @sections.each do |section| %>
+        <div class="container"> 
+          <div class="row">
+            <div class="col-sm-2">
+              <%= image_tag '/images/logo1.png', class: "fit"%>
+            </div>
+            <div class="col-sm-8">
+              <div class="template_header">
+                Republic of the Philippines <br>
+                Department of Education<br>
+                Region I<br>
+                Schools Division Office I Pangasinan <br>
+                <strong> PANGASINAN NATIONAL HIGH SCHOOL</strong><br>
+                <strong> Lingayen, Pangasinan</strong><br> <br>
+              </div>
+              <div class="template_title">
+                <h1><strong> CLASS PROGRAM</strong></h1>
+                <strong><%= link_to section.title, section %></strong><br>
+                <strong><%= section.sy %></strong><br> <br>
+                
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <%= image_tag '/images/logo2.jpg', class: "fit"%>
+
+            </div>
+          </div>
+          <table>
+            <thead class="table-header">
+              <th>TIME</th>
+              <th>SUBJECT</th>
+              <th>DAY</th>
+              <th>MINUTES/WEEK</th>
+              <th>SUBJECT TEACHER</th>
+            </thead>
+            <thead>
+              <th>7:20 - 7:40</th>
+              <th colspan="4">FLAG CEREMONY</th>
+            </thead>
+            <thead>
+              <th><%= section.subject_classes[0].schedule %></th>
+              <th><span class="section-data"><%= section.subject_classes[0].subject  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[0].day  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[0].minutes_per_week  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[0].subject_teacher  %></span></th>
+            </thead>
+            <thead>
+              <th><%= section.subject_classes[1].schedule %></th>
+              <th><span class="section-data"><%= section.subject_classes[1].subject  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[1].day  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[1].minutes_per_week  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[1].subject_teacher  %></span></th>
+            </thead>
+
+            <thead>
+              <th>7:20 - 7:40</th>
+              <th colspan="4">RECESS</th>
+            </thead>
+
+            <thead>
+              <th><%= section.subject_classes[1].schedule %></th>
+              <th><span class="section-data"><%= section.subject_classes[2].subject  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[2].day  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[2].minutes_per_week  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[2].subject_teacher  %></span></th>
+            </thead>
+
+            <thead>
+              <th><%= section.subject_classes[1].schedule %></th>
+              <th><span class="section-data"><%= section.subject_classes[3].subject  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[3].day  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[3].minutes_per_week  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[3].subject_teacher  %></span></th>
+            </thead>
+            
+            <thead>
+              <th>12:00- 1:00</th>
+              <th colspan="4">LUNCH BREAK</th>
+            </thead>
+
+            <thead>
+              <th><%= section.subject_classes[1].schedule %></th>
+              <th><span class="section-data"><%= section.subject_classes[4].subject  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[4].day  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[4].minutes_per_week  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[4].subject_teacher  %></span></th>
+            </thead>
+
+            <thead>
+              <th><%= section.subject_classes[1].schedule %></th>
+              <th><span class="section-data"><%= section.subject_classes[5].subject  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[5].day  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[5].minutes_per_week  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[5].subject_teacher  %></span></th>
+            </thead>
+
+            <thead>
+              <th><%= section.subject_classes[1].schedule %></th>
+              <th><span class="section-data"><%= section.subject_classes[6].subject  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[6].day  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[6].minutes_per_week  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[6].subject_teacher  %></span></th>
+            </thead>
+
+            <thead>
+              <th><%= section.subject_classes[1].schedule %></th>
+              <th><span class="section-data"><%= section.subject_classes[7].subject  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[7].day  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[7].minutes_per_week  %></span></th>
+              <th><span class="section-data"><%= section.subject_classes[7].subject_teacher  %></span></th>
+            </thead>
+
+          </table>
+        </div>
+        <hr>
+
+
+      <% end %>
       <br>
 
-      <%= link_to 'New Section', new_section_path %>
+      <%# link_to 'New Section', new_section_path %>
     </div>
   </div>
 </div>

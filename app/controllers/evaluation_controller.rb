@@ -33,7 +33,16 @@ class EvaluationController < ApplicationController
       end
       puts "+++++++++++++++++++++++++++++++++++++++++++"
       puts "done scheduling students"
-      # section.save
+
+      SubjectClass.create(schedule: "7:40 - 8:40", section_id: section.id)
+      SubjectClass.create(schedule: "8:40 - 9:40", section_id: section.id)
+      SubjectClass.create(schedule: "10:00 - 11:00", section_id: section.id)
+      SubjectClass.create(schedule: "11:00 - 12:00", section_id: section.id)
+
+      SubjectClass.create(schedule: "1:00 - 2:00", section_id: section.id)
+      SubjectClass.create(schedule: "2:00 - 3:00", section_id: section.id)
+      SubjectClass.create(schedule: "3:00 - 4:00", section_id: section.id)
+      SubjectClass.create(schedule: "4:00 - 5:00", section_id: section.id)
     end
 
     Student.where(grade_id: grade_id).where(school_year: school_year).where(curriculum_id: curriculum_id).order("average DESC").each do |stud|
@@ -41,5 +50,16 @@ class EvaluationController < ApplicationController
     end
 
     redirect_to sections_path
+  end
+
+  def save_class
+    puts params[:id]
+    subject_class = SubjectClass.find(params[:id])
+    subject_class.subject = params[:subject_class][:subject]
+    subject_class.day = params[:subject_class][:day]
+    subject_class.minutes_per_week = params[:subject_class][:minutes_per_week]
+    subject_class.subject_teacher = params[:subject_class][:subject_teacher]
+    subject_class.save
+    redirect_to subject_class.section
   end
 end

@@ -36,6 +36,77 @@
 </div>
     
 
+
+<div class="row my-row">
+  <div class='col-sm-12'> 
+    <div class=" my-container">
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Subject</th>
+            <th>DAY</th>
+            <th>MINUTES/WEEK</th>
+            <th>SUBJECT TEACHER</th>
+            <th colspan="2">Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @section.subject_classes.order("created_at").each do |subject_class| %>
+            <tr>
+              <td><%= subject_class.schedule %></td>
+              <td><%= subject_class.subject %></td>
+              <td><%= subject_class.day %></td>
+              <td><%= subject_class.minutes_per_week %></td>
+              <td><%= subject_class.subject_teacher %></td>
+              <td>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#sc<%= subject_class.id %>">
+                  Edit
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="sc<%= subject_class.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">EDIT CLASS</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <%= simple_form_for :subject_class , :url => "/evaluation/save_class", :method => 'post' do |f| %>        
+                        <div class="modal-body">                  
+                            <input type="hidden" name="id" value="<%= subject_class.id %>">
+                            <%= f.input :schedule, input_html: {value: subject_class.schedule, required: "required", readonly: true} %>
+                            <%= f.input :subject %>
+                            <%= f.input :day %>
+                            <%= f.input :minutes_per_week, as: :numeric %>
+                            <%= f.input :subject_teacher %>
+                        
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <%= f.button :submit, "Save changes", class: "btn btn-primary" %>
+
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
+
+
 <div class="row my-row">
   <div class='col-sm-12'> 
     <div class=" my-container">
