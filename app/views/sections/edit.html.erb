@@ -1,6 +1,13 @@
-<h1>Editing Section</h1>
 
-<%= render 'form', section: @section %>
+<div class="row my-row">
+  <div class='col-sm-12'> 
+      <div class=" my-container">
+      <h1>Editing Section</h1>
 
-<%= link_to 'Show', @section %> |
-<%= link_to 'Back', sections_path %>
+      <%= render 'form', section: @section %>
+
+      <%= link_to 'Show', @section %> |
+      <%= link_to 'Back', sections_path %>
+    </div>
+  </div>
+</div>
