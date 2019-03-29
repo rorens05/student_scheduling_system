@@ -10,7 +10,7 @@
     <%= f.input :grade_id, collection: ['8', '9', '10', '11'], include_blank: false %>
     <%= f.input :curriculum_id, collection: Curriculum.all, label_method: :name, value_method: :id, include_blank: false %>
     <%= f.input :average %> 
-    <%= f.input :section_id, collection: Section.all, label_method: :name, value_method: :id, include_blank: false %>
+    <%= f.input :section_id, collection: Section.all, label_method: :name, value_method: :id %>
     <%= f.input :birthday %>
     <%= f.input :address %>
     <%= f.input :contact_no %>
