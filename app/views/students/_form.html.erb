@@ -7,7 +7,7 @@
     <%= f.input :name %>
     <%= f.input :student_no %>
     <%= f.input :school_year, :as => :numeric %>
-    <%= f.input :grade_id, collection: ['8', '9', '10', '11'], include_blank: false %>
+    <%= f.input :grade_id, collection: ['7', '8', '9', '10'], include_blank: false %>
     <%= f.input :curriculum_id, collection: Curriculum.all, label_method: :name, value_method: :id, include_blank: false %>
     <%= f.input :average %> 
     <%= f.input :section_id, collection: Section.all, label_method: :name, value_method: :id %>
